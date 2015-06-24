@@ -9,7 +9,7 @@
     },
     "ServiceSettings": {
         "SiteName": "Mattermost",
-        "Domain": "",
+        "Domain": "127.0.0.1",
         "Mode" : "prod",
 		"AllowTesting" : false,
         "UseSSL": false,
@@ -24,15 +24,15 @@
     },
     "SqlSettings": {
         "DriverName": "mysql",
-        "DataSource": "mmuser:mostest@tcp(localhost:3306)/mattermost_test",
-        "DataSourceReplicas": ["mmuser:mostest@tcp(localhost:3306)/mattermost_test"],
+        "DataSource": "mmuser:mostest@tcp(mysql:3306)/mattermost_test",
+        "DataSourceReplicas": ["mmuser:mostest@tcp(mysql:3306)/mattermost_test"],
         "MaxIdleConns": 10,
         "MaxOpenConns": 10,
         "Trace": false,
         "AtRestEncryptKey": "Ya0xMrybACJ3sZZVWQC7e31h5nSDWZFS"
     },
     "RedisSettings": {
-        "DataSource": "localhost:6379",
+        "DataSource": "redis:6379",
         "MaxOpenConns": 1000
     },
     "AWSSettings": {
@@ -56,7 +56,7 @@
     "EmailSettings": {
         "SMTPUsername": "",
         "SMTPPassword": "",
-        "SMTPServer": "localhost:25",
+        "SMTPServer": "mail:25",
 		"UseTLS": false,
         "FeedbackEmail": "",
         "FeedbackName": "",

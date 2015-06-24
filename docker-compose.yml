@@ -1,0 +1,31 @@
+mysql:
+  image: mysql:5.6
+  environment:
+    - MYSQL_ROOT_PASSWORD=secretmysqlrootuserpassword
+    - MYSQL_USER=mmuser
+    - MYSQL_PASSWORD=mostest
+    - MYSQL_DATABASE=mattermost_test
+  volumes_from:
+    - dbdata
+
+redis:
+  image: redis:3.0
+
+dbdata:
+  image: cogniteev/echo
+  volumes:
+    - /var/lib/mysql
+
+app:
+  build: .
+  links:
+     - mysql
+     - redis
+     - mail
+  ports:
+     - "8000:80"
+
+mail:
+  image: weave/rest-smtp-sink
+  ports:
+     - "8001:80"
